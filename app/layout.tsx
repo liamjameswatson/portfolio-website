@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Navbar from "./components/common/navbar";
+import Navbar from "@/app/components/common/navbar";
+import Footer from "./components/common/footer";
 
 const interFont = Inter({ subsets: ["latin"] });
 
@@ -17,10 +18,19 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+      ></meta>
       <body className={`${interFont.className} antialiased`}>
-        <div className="h-screen w-screen bg-primary-500">
-          <Navbar />
-          {children}
+        <div className="flex-col h-screen bg-linear-to-b from-primary-100 to-primary-500">
+          <header className="h-20">
+            <Navbar />
+          </header>
+          <main className="h-[calc(100vh-80px-16px)]">{children}</main>
+          <footer className="h-8">
+            <Footer />
+          </footer>
         </div>
       </body>
     </html>
